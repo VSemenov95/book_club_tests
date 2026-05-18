@@ -1,0 +1,57 @@
+plugins {
+    id 'java-library'
+    id 'io.qameta.allure' version '2.12.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+def allureVersion = "2.32.0",
+    junitVersion = "5.14.3",
+    slf4jVersion = "2.0.17",
+    restAssuredVersion = "6.0.0",
+    selenideVersion = "7.13.0"
+
+allure {
+    report {
+        version.set(allureVersion)
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set(allureVersion)
+            }
+        }
+    }
+}
+
+dependencies {
+    testImplementation(
+            "io.rest-assured:rest-assured:$restAssuredVersion",
+            "tools.jackson.core:jackson-databind:3.1.0",
+            "io.rest-assured:json-schema-validator:$restAssuredVersion",
+            "io.qameta.allure:allure-rest-assured:$allureVersion",
+            "net.datafaker:datafaker:2.5.4",
+            "org.junit.jupiter:junit-jupiter:$junitVersion",
+            "org.assertj:assertj-core:3.27.7",
+            "org.slf4j:slf4j-simple:$slf4jVersion",
+            "com.codeborne:selenide:$selenideVersion"
+    )
+    testRuntimeOnly(
+            'org.junit.platform:junit-platform-launcher'
+    )
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}

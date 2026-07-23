@@ -17,6 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static data.TestData.TELEGRAM_CHAT_LINK;
 import static data.TestData.UPDATE_TELEGRAM_CHAT_LINK;
 
+@DisplayName("CRUD-операции с клубом")
 public class ClubsTests extends TestBase {
     TestData testData = new TestData();
 

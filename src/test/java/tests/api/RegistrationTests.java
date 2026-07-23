@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import tests.TestBase;
 
 import static io.qameta.allure.Allure.step;
-import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 import static data.TestData.*;
 
@@ -23,13 +22,7 @@ public class RegistrationTests extends TestBase {
         SuccessfulRegistrationResponseModel registrationResponse = api.user.userRegistration
                 (new RegistrationBodyModel(testData.username, testData.password));
 
-        step("Проверка данных пользователя после регистрации", () -> {
-            assertThat(registrationResponse.username()).isEqualTo(testData.username);
-            assertThat(registrationResponse.firstName()).isEqualTo("");
-            assertThat(registrationResponse.lastName()).isEqualTo("");
-            assertThat(registrationResponse.email()).isEqualTo("");
-            assertThat(registrationResponse.remoteAddr()).matches(REGISTRATION_IP_REGEXP);
-        });
+        checkSuccessfulRegistrationResponse(registrationResponse, testData.username);
     }
 
     @Test
@@ -63,7 +56,7 @@ public class RegistrationTests extends TestBase {
     }
 
     @Test
-    @DisplayName("Успешная валидация поля \"Username\" с вводом 151 символа")
+    @DisplayName("Ошибка при регистрации с именем длиной 151 символ")
     public void validationLengthCharactersRegistrationInUsername() {
         RequiredFieldsResponseModel longUserResponseModel = api.user.validationLengthCharactersRegistrationInUsername
                 (new RegistrationBodyModel(testData.longUsername, testData.password));
@@ -79,12 +72,6 @@ public class RegistrationTests extends TestBase {
         SuccessfulRegistrationResponseModel registrationResponse = api.user.maxCharactersRegistrationInUsername
                 (new RegistrationBodyModel(testData.usernameIsMaxCharacters, testData.password));
 
-        step("Проверка данных пользователя после регистрации", () -> {
-            assertThat(registrationResponse.username()).isEqualTo(testData.usernameIsMaxCharacters);
-            assertThat(registrationResponse.firstName()).isEqualTo("");
-            assertThat(registrationResponse.lastName()).isEqualTo("");
-            assertThat(registrationResponse.email()).isEqualTo("");
-            assertThat(registrationResponse.remoteAddr()).matches(REGISTRATION_IP_REGEXP);
-        });
+        checkSuccessfulRegistrationResponse(registrationResponse, testData.username);
     }
 }

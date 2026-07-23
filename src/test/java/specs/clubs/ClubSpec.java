@@ -19,13 +19,13 @@ public class ClubSpec {
             .expectBody(matchesJsonSchemaInClasspath("schemas/clubs/create_club_response_schema.json"))
             .build();
 
-    public static ResponseSpecification SuccessfulEditClubResponseSpec = new ResponseSpecBuilder()
+    public static ResponseSpecification successfulEditClubResponseSpec = new ResponseSpecBuilder()
             .addResponseSpecification(baseResponseSpec)
             .expectStatusCode(200)
             .expectBody(matchesJsonSchemaInClasspath("schemas/clubs/edit_club_response_schema.json"))
             .build();
 
-    public static ResponseSpecification SuccessfulRemoveClubResponseSpec = new ResponseSpecBuilder()
+    public static ResponseSpecification successfulRemoveClubResponseSpec = new ResponseSpecBuilder()
             .addResponseSpecification(baseResponseSpec)
             .expectStatusCode(204)
             .build();

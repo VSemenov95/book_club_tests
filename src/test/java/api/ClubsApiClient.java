@@ -45,7 +45,7 @@ public class ClubsApiClient {
                 .when()
                 .patch("/clubs/{id}/")
                 .then()
-                .spec(SuccessfulEditClubResponseSpec)
+                .spec(successfulEditClubResponseSpec)
                 .extract()
                 .as(SuccessfulCreateClubResponseModel.class);
     }
@@ -58,7 +58,7 @@ public class ClubsApiClient {
                 .when()
                 .delete("/clubs/{id}/")
                 .then()
-                .spec(SuccessfulRemoveClubResponseSpec);
+                .spec(successfulRemoveClubResponseSpec);
     }
 
     @Step("Проверка существования клуба")

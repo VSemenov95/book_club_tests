@@ -15,7 +15,6 @@ import org.junit.jupiter.api.Test;
 import tests.TestBase;
 
 import static io.qameta.allure.Allure.step;
-import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 import static data.TestData.FIELD_IS_REQUIRED;
 import static data.TestData.REGISTRATION_IP_REGEXP;
@@ -30,13 +29,7 @@ public class UpdateUserTests extends TestBase {
         SuccessfulRegistrationResponseModel registrationResponse = api.user.userRegistration
                 (new RegistrationBodyModel(testData.username, testData.password));
 
-        step("Проверка данных после регистрации", () -> {
-            assertThat(registrationResponse.username()).isEqualTo(testData.username);
-            assertThat(registrationResponse.firstName()).isEqualTo("");
-            assertThat(registrationResponse.lastName()).isEqualTo("");
-            assertThat(registrationResponse.email()).isEqualTo("");
-            assertThat(registrationResponse.remoteAddr()).matches(REGISTRATION_IP_REGEXP);
-        });
+        checkSuccessfulRegistrationResponse(registrationResponse, testData.username);
 
         String access = api.auth.successUserAuth(new LoginBodyModel
                 (testData.username, testData.password)).access();
@@ -46,13 +39,13 @@ public class UpdateUserTests extends TestBase {
 
         step("Проверка обновления данных пользователя", () -> {
             String registrationIp = registrationResponse.remoteAddr();
-            Assertions.assertThat(updateResponse.id()).isEqualTo(registrationResponse.id());
-            Assertions.assertThat(updateResponse.username()).isEqualTo(testData.username);
-            Assertions.assertThat(updateResponse.firstName()).isEqualTo(testData.firstName);
-            Assertions.assertThat(updateResponse.lastName()).isEqualTo(testData.lastName);
-            Assertions.assertThat(updateResponse.email()).isEqualTo(testData.email);
-            Assertions.assertThat(registrationResponse.remoteAddr()).matches(REGISTRATION_IP_REGEXP);
-            Assertions.assertThat(registrationIp).isEqualTo(updateResponse.remoteAddr());
+            assertThat(updateResponse.id()).isEqualTo(registrationResponse.id());
+            assertThat(updateResponse.username()).isEqualTo(testData.username);
+            assertThat(updateResponse.firstName()).isEqualTo(testData.firstName);
+            assertThat(updateResponse.lastName()).isEqualTo(testData.lastName);
+            assertThat(updateResponse.email()).isEqualTo(testData.email);
+            assertThat(registrationResponse.remoteAddr()).matches(REGISTRATION_IP_REGEXP);
+            assertThat(registrationIp).isEqualTo(updateResponse.remoteAddr());
         });
     }
 
@@ -62,13 +55,7 @@ public class UpdateUserTests extends TestBase {
 SuccessfulRegistrationResponseModel registrationResponse = api.user.userRegistration
                 (new RegistrationBodyModel(testData.username, testData.password));
 
-        step("Проверка данных после регистрации", () -> {
-            assertThat(registrationResponse.username()).isEqualTo(testData.username);
-            assertThat(registrationResponse.firstName()).isEqualTo("");
-            assertThat(registrationResponse.lastName()).isEqualTo("");
-            assertThat(registrationResponse.email()).isEqualTo("");
-            assertThat(registrationResponse.remoteAddr()).matches(REGISTRATION_IP_REGEXP);
-        });
+        checkSuccessfulRegistrationResponse(registrationResponse, testData.username);
 
         String access = api.auth.successUserAuth(new LoginBodyModel
                 (testData.username, testData.password)).access();
@@ -76,13 +63,13 @@ SuccessfulRegistrationResponseModel registrationResponse = api.user.userRegistra
         SuccessfulUpdateResponseModel updateResponse = api.user.updateEmailData(new UpdateEmailBodyModel(testData.email),access);
 
         step("Проверка обновления данных пользователя", () -> {
-            Assertions.assertThat(updateResponse.id()).isEqualTo(registrationResponse.id());
-            Assertions.assertThat(updateResponse.username()).isEqualTo(testData.username);
-            Assertions.assertThat(updateResponse.firstName()).isEqualTo("");
-            Assertions.assertThat(updateResponse.lastName()).isEqualTo("");
-            Assertions.assertThat(updateResponse.email()).isEqualTo(testData.email);
-            Assertions.assertThat(registrationResponse.remoteAddr()).matches(REGISTRATION_IP_REGEXP);
-            Assertions.assertThat(registrationResponse.remoteAddr()).isEqualTo(updateResponse.remoteAddr());
+            assertThat(updateResponse.id()).isEqualTo(registrationResponse.id());
+            assertThat(updateResponse.username()).isEqualTo(testData.username);
+            assertThat(updateResponse.firstName()).isEqualTo("");
+            assertThat(updateResponse.lastName()).isEqualTo("");
+            assertThat(updateResponse.email()).isEqualTo(testData.email);
+            assertThat(registrationResponse.remoteAddr()).matches(REGISTRATION_IP_REGEXP);
+            assertThat(registrationResponse.remoteAddr()).isEqualTo(updateResponse.remoteAddr());
         });
     }
 
@@ -92,13 +79,7 @@ SuccessfulRegistrationResponseModel registrationResponse = api.user.userRegistra
         SuccessfulRegistrationResponseModel registrationResponse = api.user.userRegistration
                 (new RegistrationBodyModel(testData.username, testData.password));
 
-        step("Проверка данных после регистрации", () -> {
-            assertThat(registrationResponse.username()).isEqualTo(testData.username);
-            assertThat(registrationResponse.firstName()).isEqualTo("");
-            assertThat(registrationResponse.lastName()).isEqualTo("");
-            assertThat(registrationResponse.email()).isEqualTo("");
-            assertThat(registrationResponse.remoteAddr()).matches(REGISTRATION_IP_REGEXP);
-        });
+        checkSuccessfulRegistrationResponse(registrationResponse, testData.username);
 
         String access = api.auth.successUserAuth(new LoginBodyModel
                 (testData.username, testData.password)).access();
@@ -108,7 +89,7 @@ SuccessfulRegistrationResponseModel registrationResponse = api.user.userRegistra
 
         step("Проверка текста ошибки", () -> {
             String actualUsernameError = updateWithoutUsernameResponse.username().get(0);
-            Assertions.assertThat(actualUsernameError).isEqualTo(FIELD_IS_REQUIRED);
+            assertThat(actualUsernameError).isEqualTo(FIELD_IS_REQUIRED);
         });
     }
 }

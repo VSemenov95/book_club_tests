@@ -1,6 +1,9 @@
 package tests.api;
 
 import data.TestData;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import models.clubs.CreateClubsBodyModel;
 import models.clubs.SuccessfulCreateClubResponseModel;
 import models.login.LoginBodyModel;
@@ -9,6 +12,7 @@ import models.registration.RegistrationBodyModel;
 import models.registration.SuccessfulRegistrationResponseModel;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.TestBase;
 
@@ -17,11 +21,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static data.TestData.TELEGRAM_CHAT_LINK;
 import static data.TestData.UPDATE_TELEGRAM_CHAT_LINK;
 
+@Owner("VSSemenov")
+@Epic("CRUD-операции с клубом")
 @DisplayName("CRUD-операции с клубом")
 public class ClubsTests extends TestBase {
     TestData testData = new TestData();
 
     @Test
+    @Tag("API")
+    @Story("Создание клуба")
     @DisplayName("Создание клуба")
     public void successfulCreationOfClub() {
         SuccessfulRegistrationResponseModel registrationResponse = api.user.userRegistration
@@ -56,6 +64,8 @@ public class ClubsTests extends TestBase {
     }
 
     @Test
+    @Tag("API")
+    @Story("Просмотр клуба")
     @DisplayName("Просмотр клуба")
     public void successfulViewingClub() {
         api.user.userRegistration(new RegistrationBodyModel(testData.username, testData.password));
@@ -85,6 +95,8 @@ public class ClubsTests extends TestBase {
     }
 
     @Test
+    @Tag("API")
+    @Story("Редактирование клуба")
     @DisplayName("Редактирование телеграм-ссылки клуба")
     public void successfulEditingClub() {
         api.user.userRegistration(new RegistrationBodyModel(testData.username, testData.password));
@@ -121,6 +133,8 @@ public class ClubsTests extends TestBase {
     }
 
     @Test
+    @Tag("API")
+    @Story("Удаление клуба")
     @DisplayName("Удаление клуба")
     public void successfulRemoveClub() {
         api.user.userRegistration(new RegistrationBodyModel(testData.username, testData.password));

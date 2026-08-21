@@ -1,6 +1,9 @@
 package tests.ui;
 
 import data.TestData;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import io.qameta.allure.internal.shadowed.jackson.core.JsonProcessingException;
 import io.qameta.allure.internal.shadowed.jackson.databind.ObjectMapper;
 import models.clubs.CreateClubsBodyModel;
@@ -13,6 +16,7 @@ import models.registration.RegistrationBodyModel;
 import models.registration.SuccessfulRegistrationResponseModel;
 import models.reviews.CreateReviewBodyModel;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.BookClubPage;
 import pages.components.RatingToStarsComponent;
@@ -20,6 +24,9 @@ import tests.TestBase;
 
 import static data.TestData.*;
 
+@Owner("VSSemenov")
+@DisplayName("Действия пользователя с сущностью Отзыв")
+@Epic("Доработка функциональности пользовательских операций относительно отзывов")
 public class ReviewUiTests extends TestBase {
     TestData testData = new TestData();
     BookClubPage bookClubPage = new BookClubPage();
@@ -27,6 +34,8 @@ public class ReviewUiTests extends TestBase {
 
 
     @Test
+    @Tag("UI")
+    @Story("Создание отзыва")
     @DisplayName("[UI] Создание отзыва")
     public void successfulCreationOfReviewUi() {
         SuccessfulRegistrationResponseModel registrationResponse = api.user.userRegistration
@@ -91,6 +100,8 @@ public class ReviewUiTests extends TestBase {
     }
 
     @Test
+    @Tag("UI")
+    @Story("Редактирование отзыва")
     @DisplayName("[UI] Редактирование отзыва")
     public void successfulEditReviewUi() {
         SuccessfulRegistrationResponseModel registrationResponse = api.user.userRegistration
@@ -165,6 +176,8 @@ public class ReviewUiTests extends TestBase {
     }
 
     @Test
+    @Tag("UI")
+    @Story("Удаление отзыва")
     @DisplayName("[UI] Удаление отзыва")
     public void successfulDeletingReviewUi() {
         SuccessfulRegistrationResponseModel registrationResponse = api.user.userRegistration

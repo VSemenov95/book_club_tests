@@ -1,6 +1,9 @@
 package tests.ui;
 
 import data.TestData;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import io.qameta.allure.internal.shadowed.jackson.core.JsonProcessingException;
 import io.qameta.allure.internal.shadowed.jackson.databind.ObjectMapper;
 import models.clubs.CreateClubsBodyModel;
@@ -12,18 +15,23 @@ import models.login.SuccessfulLoginResponseModel;
 import models.registration.RegistrationBodyModel;
 import models.registration.SuccessfulRegistrationResponseModel;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.BookClubPage;
 import tests.TestBase;
 
 import static data.TestData.*;
 
-
+@Owner("VSSemenov")
+@DisplayName("Действия пользователя с сущностью Клуб")
+@Epic("Доработка функциональности пользовательских операций относительно книжного клуба")
 public class ClubsUiTests extends TestBase {
     TestData testData = new TestData();
     BookClubPage bookClubPage = new BookClubPage();
 
     @Test
+    @Tag("UI")
+    @Story("Создание клуба")
     @DisplayName("[UI] Создание клуба")
     public void successfulCreationOfClubWithUi() {
         SuccessfulRegistrationResponseModel registrationResponse = api.user.userRegistration
@@ -72,6 +80,8 @@ public class ClubsUiTests extends TestBase {
     }
 
     @Test
+    @Tag("UI")
+    @Story("Редактирование клуба")
     @DisplayName("[UI] Редактирование описания клуба")
     public void successfulEditingClubUI() {
         SuccessfulRegistrationResponseModel registrationResponse = api.user.userRegistration(new RegistrationBodyModel(testData.username, testData.password));
@@ -131,6 +141,8 @@ public class ClubsUiTests extends TestBase {
     }
 
     @Test
+    @Tag("UI")
+    @Story("Удаление клуба")
     @DisplayName("[UI] Удаление клуба")
     public void successfulRemoveClubUI() {
         SuccessfulRegistrationResponseModel registrationResponse = api.user.userRegistration(new RegistrationBodyModel(testData.username, testData.password));

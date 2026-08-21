@@ -1,6 +1,9 @@
 package tests.api;
 
 import data.TestData;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import io.restassured.response.Response;
 import models.login.LoginBodyModel;
 import models.login.SuccessfulLoginResponseModel;
@@ -10,6 +13,7 @@ import models.logout.UnauthorizedResponseModel;
 import models.registration.RegistrationBodyModel;
 import models.registration.SuccessfulRegistrationResponseModel;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.TestBase;
 
@@ -17,11 +21,15 @@ import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
 import static data.TestData.*;
 
+@Owner("VSSemenov")
+@Epic("Разработка ручки для логаута пользователя")
 @DisplayName("Проверка выхода из учетной записи")
 public class LogoutTests extends TestBase {
     TestData testData = new TestData();
 
     @Test
+    @Tag("API")
+    @Story("MVP.Ручка логаута")
     @DisplayName("Успешный выход из учетной записи")
     public void successfulLogout() {
         SuccessfulRegistrationResponseModel registrationResponse = api.user.userRegistration
@@ -47,6 +55,8 @@ public class LogoutTests extends TestBase {
         });
     }
 
+    @Tag("API")
+    @Story("Ручка логаута.Валидации")
     @Test
     @DisplayName("Пустой refresh")
     public void transmittingRefreshIsNull() {
@@ -60,6 +70,8 @@ public class LogoutTests extends TestBase {
         });
     }
 
+    @Tag("API")
+    @Story("Ручка логаута.Валидации")
     @Test
     @DisplayName("Выход пользователя с невалидным refresh")
     public void passingInvalidRefresh() {

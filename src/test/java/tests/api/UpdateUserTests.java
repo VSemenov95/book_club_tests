@@ -1,6 +1,9 @@
 package tests.api;
 
 import data.TestData;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import models.login.LoginBodyModel;
 import models.login.RequiredFieldsResponseModel;
 import models.registration.RegistrationBodyModel;
@@ -9,8 +12,8 @@ import models.update.SuccessfulUpdateResponseModel;
 import models.update.UpdateBodyModel;
 import models.update.UpdateEmailBodyModel;
 import models.update.UpdateWithoutUsernameBodyModel;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.TestBase;
 
@@ -19,11 +22,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static data.TestData.FIELD_IS_REQUIRED;
 import static data.TestData.REGISTRATION_IP_REGEXP;
 
+@Owner("VSSemenov")
+@Epic("Создание ручки для обновления данных пользователя")
 @DisplayName("Проверка обновления данных пользователя")
 public class UpdateUserTests extends TestBase {
     TestData testData = new TestData();
 
     @Test
+    @Tag("API")
+    @Story("Редактирование пользователя")
     @DisplayName("Успешное обновление данных пользователя")
     public void successfulUpdateUserDataTest() {
         SuccessfulRegistrationResponseModel registrationResponse = api.user.userRegistration
@@ -50,6 +57,8 @@ public class UpdateUserTests extends TestBase {
     }
 
     @Test
+    @Tag("API")
+    @Story("Редактирование пользователя")
     @DisplayName("Успешное добавление поля \"email\"")
     public void successfulEmailUpdate() {
 SuccessfulRegistrationResponseModel registrationResponse = api.user.userRegistration
@@ -74,6 +83,8 @@ SuccessfulRegistrationResponseModel registrationResponse = api.user.userRegistra
     }
 
     @Test
+    @Tag("API")
+    @Story("Редактирование пользователя.Валидации")
     @DisplayName("Проверка валидации обязательности поля \"username\"")
     public void usernameFieldRequiredUpdate() {
         SuccessfulRegistrationResponseModel registrationResponse = api.user.userRegistration

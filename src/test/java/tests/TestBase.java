@@ -26,6 +26,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class TestBase {
     public static final ApiClient api = new ApiClient();
 
+
     @BeforeAll
     public static void setUp() {
         RestAssured.baseURI = "https://book-club.qa.guru";
@@ -86,14 +87,22 @@ private static MutableCapabilities selenoidCapabilities() {
     public void setup() {
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
-
     @AfterEach
     void addAttachments() {
-        Attach.screenshotAs("Last screenshot");
-        Attach.pageSource();
-        Attach.browserConsoleLogs();
-        Attach.addVideo();
-        closeWebDriver();
+        if (!hasWebDriverStarted()) {
+            return;
+        }
+        try {
+            Attach.screenshotAs("Last screenshot");
+            Attach.pageSource();
+            Attach.browserConsoleLogs();
+            if (Configuration.remote != null) {
+                Attach.addVideo();
+            }
+        } catch (Exception ignored) {
+        } finally {
+            closeWebDriver();
+        }
     }
 
     public static void checkSuccessfulRegistrationResponse(SuccessfulRegistrationResponseModel response,

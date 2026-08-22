@@ -26,7 +26,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class TestBase {
     public static final ApiClient api = new ApiClient();
 
-
     @BeforeAll
     public static void setUp() {
         RestAssured.baseURI = "https://book-club.qa.guru";

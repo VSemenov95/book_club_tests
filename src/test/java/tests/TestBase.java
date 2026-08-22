@@ -87,23 +87,16 @@ private static MutableCapabilities selenoidCapabilities() {
     public void setup() {
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
+
     @AfterEach
     void addAttachments() {
-        if (!hasWebDriverStarted()) {
-            return;
-        }
-        try {
-            Attach.screenshotAs("Last screenshot");
-            Attach.pageSource();
-            Attach.browserConsoleLogs();
-            if (Configuration.remote != null) {
-                Attach.addVideo();
-            }
-        } catch (Exception ignored) {
-        } finally {
-            closeWebDriver();
-        }
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
+        Attach.browserConsoleLogs();
+        Attach.addVideo();
+        closeWebDriver();
     }
+
 
     public static void checkSuccessfulRegistrationResponse(SuccessfulRegistrationResponseModel response,
                                                            String expectedUsername) {

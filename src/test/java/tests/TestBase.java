@@ -3,9 +3,11 @@ package tests;
 import api.ApiClient;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import io.restassured.RestAssured;
 import models.registration.SuccessfulRegistrationResponseModel;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.MutableCapabilities;
@@ -15,6 +17,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
 
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.hasWebDriverStarted;
 import static data.TestData.REGISTRATION_IP_REGEXP;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -82,6 +86,23 @@ private static MutableCapabilities selenoidCapabilities() {
     @BeforeEach
     public void setup() {
         SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+    @AfterEach
+    void addAttachments() {
+        if (!hasWebDriverStarted()) {
+            return;
+        }
+        try {
+            Attach.screenshotAs("Last screenshot");
+            Attach.pageSource();
+            Attach.browserConsoleLogs();
+            if (Configuration.remote != null) {
+                Attach.addVideo();
+            }
+        } catch (Exception ignored) {
+        } finally {
+            closeWebDriver();
+        }
     }
 
     public static void checkSuccessfulRegistrationResponse(SuccessfulRegistrationResponseModel response,

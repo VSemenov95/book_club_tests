@@ -74,17 +74,17 @@ ___
 ### *Тест-кейсы*
 
 <p align="center">  
-<img title="Allure Tests" src="media/screen/Allure_integration.png" width="850">  
+<img title="Allure Tests" src="media/screen/testOpsCase.png" width="850">  
 </p>
 
 ___
 <a id="allure-testops"></a>
-## <img alt="Allure" height="25" src="media/icons/AllureTestops.svg" width="25"/></a> Интеграция с <a target="_blank" href="https://allure.autotests.cloud/project/5151/dashboards"> Allure TestOps</a>
+## <img alt="Allure" height="25" src="media/icons/AllureTestops.svg" width="25"/></a> Интеграция с <a target="_blank" href="https://allure.qa.guru/project/5358/dashboards"> Allure TestOps</a>
 ____
 ### *Allure TestOps Dashboard*
 
 <p align="center">  
-<img title="Allure TestOps Dashboard" src="media/screen/dashboard.png" width="850">  
+<img title="Allure TestOps Dashboard" src="media/screen/dashboards.png" width="850">  
 </p>  
 
 ### *Авто тест-кейсы*

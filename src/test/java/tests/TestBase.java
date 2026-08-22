@@ -97,7 +97,6 @@ private static MutableCapabilities selenoidCapabilities() {
         closeWebDriver();
     }
 
-
     public static void checkSuccessfulRegistrationResponse(SuccessfulRegistrationResponseModel response,
                                                            String expectedUsername) {
         step("Проверка данных пользователя после регистрации", () -> {

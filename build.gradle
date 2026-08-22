@@ -38,7 +38,8 @@ dependencies {
             "org.junit.jupiter:junit-jupiter:$junitVersion",
             "org.assertj:assertj-core:3.27.7",
             "org.slf4j:slf4j-simple:$slf4jVersion",
-            "com.codeborne:selenide:$selenideVersion"
+            "com.codeborne:selenide:$selenideVersion",
+            "org.seleniumhq.selenium:selenium-java:4.27.0"
     )
     testRuntimeOnly(
             'org.junit.platform:junit-platform-launcher'

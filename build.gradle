@@ -31,6 +31,7 @@ dependencies {
     testImplementation(
             "io.rest-assured:rest-assured:$restAssuredVersion",
             "tools.jackson.core:jackson-databind:3.1.0",
+            "io.qameta.allure:allure-selenide:2.19.0",
             "io.rest-assured:json-schema-validator:$restAssuredVersion",
             "io.qameta.allure:allure-rest-assured:$allureVersion",
             "net.datafaker:datafaker:2.5.4",

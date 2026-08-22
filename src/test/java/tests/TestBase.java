@@ -1,10 +1,12 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
-import io.restassured.RestAssured;
-import org.junit.jupiter.api.BeforeAll;
 import api.ApiClient;
+import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.restassured.RestAssured;
 import models.registration.SuccessfulRegistrationResponseModel;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
@@ -28,6 +30,11 @@ public class TestBase {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of("enableVNC", true, "enableVideo", true));
         Configuration.browserCapabilities = capabilities;
+    }
+
+    @BeforeEach
+    public void setup() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
     public static void checkSuccessfulRegistrationResponse(SuccessfulRegistrationResponseModel response,

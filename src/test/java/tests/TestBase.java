@@ -8,13 +8,8 @@ import io.restassured.RestAssured;
 import models.registration.SuccessfulRegistrationResponseModel;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.HashMap;
 import java.util.Map;
 
 import static data.TestData.REGISTRATION_IP_REGEXP;
@@ -26,26 +21,16 @@ public class TestBase {
 
 
     @BeforeAll
-    public static void setUp() throws MalformedURLException {
+    public static void setUp() {
         RestAssured.baseURI = "https://book-club.qa.guru";
         RestAssured.basePath = "/api/v1";
-        ChromeOptions options = new ChromeOptions();
-        options.setCapability("browserVersion", "149.0");
-        options.setCapability("selenoid:options", new HashMap<String, Object>() {{
-            put("name", "Manual session");
-            put("sessionTimeout", "60m");
-            put("screenResolution", "1920x1080x24");
-            put("timeZone", "UTC");
-            put("labels", new HashMap<String, Object>() {{
-                put("manual", "true");
-            }});
-            put("enableVNC", true);
-            put("enableVideo", true);
-            put("enableHAR", false);
-            put("enableLog", true);
-        }});
-        RemoteWebDriver driver = new RemoteWebDriver(new URL("https://qa_engineer:-aAb_-4gs53FD@selenoid.qa.guru/wd/hub"), options);
-
+        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
+        Configuration.browserVersion = System.getProperty("browserVersion", "149");
+        Configuration.remote = System.getProperty("https://qa_engineer:-aAb_-4gs53FD@selenoid.qa.guru/wd/hub");
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of("enableVNC", true, "enableVideo", true));
+        Configuration.browserCapabilities = capabilities;
     }
 
     @BeforeEach

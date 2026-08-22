@@ -35,14 +35,14 @@ public class BookClubPage {
 
     @Step("Открыть ресурс и передать авторизацию")
     public BookClubPage openFaviconPage(String value) {
-        open("https://book-club.qa.guru/favicon.ico");
+        open("/favicon.ico");
         localStorage().setItem("book_club_auth", value);
         return this;
     }
 
     @Step("Перейти в созданный клуб по id: {value}")
     public BookClubPage openBookClubPage(int value) {
-        open("https://book-club.qa.guru/clubs/" + value);
+        open("/clubs/" + value);
         return this;
     }
 

@@ -1,5 +1,6 @@
 package helpers;
 
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
@@ -14,6 +15,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.openqa.selenium.logging.LogType.BROWSER;
 
 public class Attach {
+
     @Attachment(value = "{attachName}", type = "image/png")
     public static byte[] screenshotAs(String attachName) {
         return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
@@ -30,20 +32,14 @@ public class Attach {
     }
 
     public static void browserConsoleLogs() {
-        attachAsText(
-                "Browser console logs",
-                String.join("\n", Selenide.getWebDriverLogs(BROWSER))
-        );
-    }
-
-    public static URL getVideoUrl() {
-        String videoUrl = "https://selenoid.autotests.cloud/video/" + sessionId() + ".mp4";
         try {
-            return new URL(videoUrl);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+            attachAsText(
+                    "Browser console logs",
+                    String.join("\n", Selenide.getWebDriverLogs(BROWSER))
+            );
+        } catch (Exception e) {
+            attachAsText("Browser console logs", "Could not get browser logs: " + e.getMessage());
         }
-        return null;
     }
 
     @Attachment(value = "Video", type = "text/html", fileExtension = ".html")
@@ -53,4 +49,26 @@ public class Attach {
                 + "' type='video/mp4'></video></body></html>";
     }
 
+    private static URL getVideoUrl() {
+        String videoHost = System.getProperty("videoUrl");
+        if (videoHost == null || videoHost.isBlank()) {
+            String remote = Configuration.remote;
+            if (remote != null && remote.contains("/wd/hub")) {
+                videoHost = remote
+                        .replaceFirst("^https://[^@]*@", "https://")
+                        .replace("/wd/hub", "/video/");
+            } else {
+                videoHost = "https://selenoid.qa.guru/video/";
+            }
+        }
+        if (!videoHost.endsWith("/")) {
+            videoHost += "/";
+        }
+        String videoUrl = videoHost + sessionId() + ".mp4";
+        try {
+            return new URL(videoUrl);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("Unable to create video URL", e);
+        }
+    }
 }

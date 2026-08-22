@@ -27,7 +27,6 @@
 <a href="https://junit.org/junit5/"><img src="media/icons/JUnit5.svg" width="50" height="50"  alt="JUnit 5"/></a>  
 <a href="https://gradle.org/"><img src="media/icons/Gradle.svg" width="50" height="50"  alt="Gradle"/></a>  
 <a href="https://selenide.org/"><img src="media/icons/Selenide.svg" width="50" height="50"  alt="Selenide"/></a>  
-<a href="https://aerokube.com/selenoid/"><img src="media/icons/Selenoid.svg" width="50" height="50"  alt="Selenoid"/></a>  
 <a href="ht[images](images)tps://github.com/allure-framework/allure2"><img src="media/icons/Allure_Report.svg" width="50" height="50"  alt="Allure"/></a> 
 <a href="https://qameta.io/"><img src="media/icons/AllureTestops.svg" width="50" height="50"  alt="Allure TestOps"/></a>   
 <a href="https://www.jenkins.io/"><img src="media/icons/Jenkins.svg" width="50" height="50"  alt="Jenkins"/></a>  
@@ -37,7 +36,7 @@
 
 ____
 <a id="jenkins"></a>
-## <img alt="Jenkins" height="25" src="media/logo/Jenkins.svg" width="25"/></a><a name="Сборка"></a>Сборка в [Jenkins](https://jenkins.autotests.cloud/view/java_students/job/VSemenov_qa-scooter_39/)</a>
+## <img alt="Jenkins" height="25" src="media/icons/Jenkins.svg" width="25"/></a><a name="Сборка"></a>Сборка в [Jenkins](https://jenkins.autotests.cloud/view/java_students/job/VSemenov_qa-scooter_39/)</a>
 ____
 <p align="center">  
 <a href="https://jenkins.autotests.cloud/view/java_students/job/VSemenov_qa-scooter_39/"><img src="media/screen/jenkins.png" alt="Jenkins" width="950"/></a>  
@@ -69,7 +68,7 @@ clean test
 ```
 ___
 <a id="allure"></a>
-## <img alt="Allure" height="25" src="media/logo/Allure_Report.svg" width="25"/></a> <a name="Allure"></a> [Allure-отчет](https://jenkins.autotests.cloud/view/java_students/job/VSemenov_qa-scooter_39/allure/)</a>
+## <img alt="Allure" height="25" src="media/icons/Allure_Report.svg" width="25"/></a> <a name="Allure"></a> [Allure-отчет](https://jenkins.autotests.cloud/view/java_students/job/VSemenov_qa-scooter_39/allure/)</a>
 ___
 
 ### *Тест-кейсы*
@@ -80,39 +79,23 @@ ___
 
 ___
 <a id="allure-testops"></a>
-## <img alt="Allure" height="25" src="media/logo/AllureTestops.svg" width="25"/></a> Интеграция с <a target="_blank" href="https://allure.autotests.cloud/project/5151/dashboards"> Allure TestOps</a>
+## <img alt="Allure" height="25" src="media/icons/AllureTestops.svg" width="25"/></a> Интеграция с <a target="_blank" href="https://allure.autotests.cloud/project/5151/dashboards"> Allure TestOps</a>
 ____
 ### *Allure TestOps Dashboard*
 
 <p align="center">  
-<img title="Allure TestOps Dashboard" src="media/screen/Test_ops_dashboard.png" width="850">  
+<img title="Allure TestOps Dashboard" src="media/screen/dashboard.png" width="850">  
 </p>  
 
 ### *Авто тест-кейсы*
 
 <p align="center">  
-<img title="Allure TestOps Tests" src="media/screen/Test_ops_test_case.png" width="850">  
-</p>
-
-___
-<a id="jira"></a>
-## <img alt="Jira" height="25" src="media/logo/JiraIcon.svg" width="25"/></a> Интеграция с <a target="_blank" href="https://jira.autotests.cloud/browse/HOMEWORK-1590">Jira</a>
-____
-<p align="center">  
-<img title="Jira" src="media/screen/Jira_integration.png" width="850">  
-</p>
-
-____
-<a id="telegram"></a>
-## <img alt="Telegram" height="25" src="media/logo/Telegram.svg" width="25"/></a> Уведомление в Telegram при помощи бота
-____
-<p align="center">  
-<img title="Allure Overview Dashboard" src="media/screen/telegram_bot.png" width="550">  
+<img title="Allure TestOps Tests" src="media/screen/testOpsCase.png" width="850">  
 </p>
 
 ____
 <a id="video"></a>
-## <img alt="Selenoid" height="25" src="media/logo/Selenoid.svg" width="25"/></a> Примеры видео выполнения тестов на Selenoid
+## <img alt="Selenoid" height="25" src="media/icons/Selenoid.svg" width="25"/></a> Примеры видео выполнения тестов на Selenoid
 ____
 <p align="center">
 <img title="Selenoid Video" src="media/video/example.gif" width="500" height="400"  alt="video">   

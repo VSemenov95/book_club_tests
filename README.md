@@ -25,9 +25,10 @@
 <a href="https://junit.org/junit5/"><img src="media/icons/JUnit5.svg" width="50" height="50"  alt="JUnit 5"/></a>  
 <a href="https://gradle.org/"><img src="media/icons/Gradle.svg" width="50" height="50"  alt="Gradle"/></a>  
 <a href="https://selenide.org/"><img src="media/icons/Selenide.svg" width="50" height="50"  alt="Selenide"/></a>  
-<a href="ht[images](images)tps://github.com/allure-framework/allure2"><img src="media/icons/Allure_Report.svg" width="50" height="50"  alt="Allure"/></a> 
+<a href="https://github.com/allure-framework/allure2"><img src="media/icons/Allure_Report.svg" width="50" height="50"  alt="Allure"/></a> 
 <a href="https://qameta.io/"><img src="media/icons/AllureTestops.svg" width="50" height="50"  alt="Allure TestOps"/></a>   
-<a href="https://www.jenkins.io/"><img src="media/icons/Jenkins.svg" width="50" height="50"  alt="Jenkins"/></a>  
+<a href="https://www.jenkins.io/"><img src="media/icons/Jenkins.svg" width="50" height="50"  alt="Jenkins"/></a>
+<a href="https://selenide.org/"><img src="media/icons/Selenoid.svg" width="50" height="50"  alt="Selenoid"/>
 </a>  
 </p>
 
@@ -37,7 +38,7 @@ ____
 ## <img alt="Jenkins" height="25" src="media/icons/Jenkins.svg" width="25"/></a><a name="Сборка"></a>Сборка в [Jenkins](https://jenkins.autotests.cloud/view/java_students/job/VSemenov_qa-scooter_39/)</a>
 ____
 <p align="center">  
-<a href="https://jenkins.qa.guru/view/java-students/job/41_SemenovVS_bookClubTests/"><img src="media/screen/JenkinsScreen.png" alt="Jenkins" width="950"/></a>  
+<a href="https://jenkins.qa.guru/view/java-students/job/41_SemenovVS_bookClubTests/"><img src="media/screen/JenkinsRun.png" alt="Jenkins" width="950"/></a>  
 </p>
 
 
@@ -96,5 +97,5 @@ ____
 ## <img alt="Selenoid" height="25" src="media/icons/Selenoid.svg" width="25"/></a> Примеры видео выполнения тестов на Selenoid
 ____
 <p align="center">
-<img title="Selenoid Video" src="media/video/example.gif" width="500" height="400"  alt="video">   
+<img title="Selenoid Video" src="media/video/booksGif.gif" width="500" height="400"  alt="video">   
 </p>

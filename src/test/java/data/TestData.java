@@ -7,7 +7,7 @@ import java.util.Locale;
 
 public class TestData {
     Faker faker = new Faker(new Locale("en"));
-    public String username = faker.name().firstName() + "vssemenov_tests",
+    public String username = faker.name().firstName() + "vssemenov_tests_data",
             password = faker.credentials().password(),
             longUsername = faker.lorem().characters(151),
             usernameIsMaxCharacters = faker.lorem().characters(150),

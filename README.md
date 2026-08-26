@@ -35,7 +35,7 @@
 
 ____
 <a id="jenkins"></a>
-## <img alt="Jenkins" height="25" src="media/icons/Jenkins.svg" width="25"/></a><a name="Сборка"></a>Сборка в [Jenkins](https://jenkins.autotests.cloud/view/java_students/job/VSemenov_qa-scooter_39/)</a>
+## <img alt="Jenkins" height="25" src="media/icons/Jenkins.svg" width="25"/></a><a name="Сборка"></a>Сборка в [Jenkins](https://jenkins.qa.guru/view/java-students/job/41_SemenovVS_bookClubTests/)</a>
 ____
 <p align="center">  
 <a href="https://jenkins.qa.guru/view/java-students/job/41_SemenovVS_bookClubTests/"><img src="media/screen/JenkinsRun.png" alt="Jenkins" width="950"/></a>  
@@ -67,7 +67,7 @@ clean test
 ```
 ___
 <a id="allure"></a>
-## <img alt="Allure" height="25" src="media/icons/Allure_Report.svg" width="25"/></a> <a name="Allure"></a> [Allure-отчет](https://jenkins.autotests.cloud/view/java_students/job/VSemenov_qa-scooter_39/allure/)</a>
+## <img alt="Allure" height="25" src="media/icons/Allure_Report.svg" width="25"/></a> <a name="Allure"></a> [Allure-отчет](https://jenkins.qa.guru/view/java-students/job/41_SemenovVS_bookClubTests/allure/)</a>
 ___
 
 ### *Тест-кейсы*

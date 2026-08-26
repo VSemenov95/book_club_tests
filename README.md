@@ -60,7 +60,7 @@ gradle clean test
 ***Удалённый запуск через Jenkins:***
 ```bash  
 clean test
--DbrowserName="$BROWSER_NAME"
+-DbrowserName="$BROWSER"
 -DbrowserVersion="$BROWSER_VERSION"
 -DbrowserSize="BROWSER_SIZE"
 -DremoteUrl=https://user1:1234@selenoid.autotests.cloud/wd/hub
